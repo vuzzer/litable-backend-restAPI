@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-nodejs-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      todo: web
+  template:
+    metadata:
+      labels:
+        todo: web
+    spec:
+      containers:
+      - name: litable
+        image: bienvenuparfait/litable
+        env:
+        - name: MONGO_URL
+          value: "mongodb+srv://hash:GAPXwMfL3aseLcK@cluster0.kcvxa.mongodb.net/litable-database-test"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "250m"
+          limits: 
+            memory: "200Mi"
+            cpu: "500m"
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    todo: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001

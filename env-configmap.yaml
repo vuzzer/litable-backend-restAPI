@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: litable.configmap
+data:
+  MONGO_URL: mongodb+srv://hash:GAPXwMfL3aseLcK@cluster0.kcvxa.mongodb.net/litable-database-test
+
