@@ -116,7 +116,7 @@ exports.getLitableById = (req, res, next) => {
     Litable.findById({_id:Object(byId)} ).then((litable) => {
         res.json(litable)
     }).catch((e) => {
-        let error = new Error()
+        let error = new Error() 
         error.message = "Error occured during updating data"
         throw error
     })

@@ -18,7 +18,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     npm ci --include=dev
 USER node
 COPY . .
-CMD npm run dev
+CMD ["npm", "run", "dev"]
 
 
 FROM base as prod
@@ -29,7 +29,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     npm ci --omit=dev
 USER node
 COPY . .
-CMD npm start
+CMD ["npm", "start"]
 
 
 FROM base as test

@@ -1,7 +1,11 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const clientSchema = new Schema({
+    uid: {
+        type: String,
+        unique: true
+    },
     username: String,
     email: String,
     password: String,
@@ -9,4 +13,4 @@ const clientSchema = new Schema({
     role: String
 })
 
-export default mongoose.model("Client", clientSchema);
+module.exports = mongoose.model("Client", clientSchema);
